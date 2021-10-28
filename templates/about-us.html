@@ -1,0 +1,304 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>X-Lebs</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="eCommerce HTML Template Free Download" name="keywords">
+        <meta content="eCommerce HTML Template Free Download" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="{% static 'lib/slick/slick.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/slick/slick-theme.css' %}" rel="stylesheet">
+
+
+        <!-- Template Stylesheet -->
+        <link   href="{% static 'css/style.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Nav Bar Start -->
+        <div class="nav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                    <a href="#" class="navbar-brand">MENU</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto">
+                            <a href="{% url 'home_page' %}" class="nav-item nav-link active">Home</a>
+                            <a href="{% url 'all_items' %}" class="nav-item nav-link">Products</a>
+                            <a href="{% url 'cart' %}" class="nav-item nav-link">Cart</a>
+                            <a href="{% url 'my_account' %}" class="nav-item nav-link">My Account</a>
+                           
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
+                                <div class="dropdown-menu">
+                                    <a href="wishlist.html" class="dropdown-item">Wishlist</a>
+                                    <a href="{% url 'contact' %}" class="dropdown-item">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="navbar-nav ml-auto">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{first|capfirst }}{{last|capfirst}}</a>
+                                <div class="dropdown-menu">
+                                    <a href="{% url 'login' %}" class="dropdown-item">Login</a>
+                                    <a href="{% url 'register' %}" class="dropdown-item">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Nav Bar End -->
+
+        <!-- Bottom Bar Start -->
+        <div class="bottom-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="{% static 'img/logo.png' %}" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <input type="text" placeholder="Search">
+                            <button><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="user">
+                            <a href="add-product.html" class="btn add-product">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                            
+                            <a href="{% url 'cart' %}" class="btn cart">
+                                <i class="fas fa-shopping-bag font"></i>
+                                {% if length > 0%}
+                                <span class="cart_item rounded-circle">{{length}}</span>
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Bar End -->
+
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Products</a></li>
+                    <li class="breadcrumb-item active">Product Detail</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+
+        <!-- About us Start -->
+        <div class="product-view">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="product-view-top">
+                                    <div class="row">
+                                        <div class="section-header">
+                                            <h1>About us</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                <!--  -->
+
+                            <div class="tab-content">
+                                <div id="description" class="container tab-pane active">
+                                    <h4>About us Description</h4>
+                                    <p>
+                                        Welcome to X-Lebs, your number one source for all things shoes, bags, dog treats, t-shirt, blouse, dress, trouser, abaya.....etc. We're dedicated to giving you the very best of product, with a focus on three characteristics, ie: dependability, customer service and uniqueness.
+                                        Founded in 2020 by Mahmoud Refat, Mohamed Abdalal, Mohamed Mostafa, Omar Rafat, Ahmed Ashraf, X-Lebs has come a long way from its beginnings in a Assiut Univarsity, Faculty computer and Information, When Team first started out, them passion for [passion of founder, ie: helping other parents be more eco-friendly, providing the best equipment for his fellow musicians] drove him to [action, ie: do intense research, quit her day job], and gave him the impetus to turn hard work and inspiration into to a booming online store. We now serve customers all over [place, ie: the US, the world, the Austin area], and are thrilled to be a part of the [adjective, ie: quirky, eco-friendly, fair trade] wing of the [industry type, ie: fashion, baked goods, watches] industry.
+
+                                        We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
+
+                                        Sincerely,
+                                        X-Lebs Team.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- Side Bar Start -->
+                    <div class="col-lg-4 sidebar">
+
+
+                        <div class="sidebar-widget brands">
+                            <h2 class="title">Our Brands</h2>
+                            <ul>
+                                <li><a href="#">H&M</a><span>(45)</span></li>
+                                <li><a href="#">ZARA </a><span>(34)</span></li>
+                                <li><a href="#">NIKE </a><span>(67)</span></li>
+                                <li><a href="#">POLO</a><span>(74)</span></li>
+                                <li><a href="#">Vatrinaz </a><span>(89)</span></li>
+                                <li><a href="#">Zam Designs</a><span>(28)</span></li>
+                                <li><a href="#">Carters</a><span>(17)</span></li>
+                                <li><a href="#">Mothercare</a><span>(20)</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-widget tag">
+                            <h2 class="title">Tags Cloud</h2>
+                            <a href="#">X-Lebs</a>
+                            <a href="#">h&m</a>
+                            <a href="#">polo</a>
+                            <a href="#">zara</a>
+                            <a href="#">nike</a>
+                            <a href="#">vartinaz</a>
+                            <a href="#">zamdesigns</a>
+                            <a href="#">carters</a>
+                            <a href="#">mothercare</a>
+                            <a href="#">clothes</a>
+                            <a href="#">fashion</a>
+                            <a href="#">beauty</a>
+                            <a href="#">men</a>
+                            <a href="#">women</a>
+                            <a href="#">kids</a>
+                            <a href="#">child</a>
+                            <a href="#">lebs</a>
+                            <a href="#">xlebs</a>
+                            <a href="#">t-shirt</a>
+                            <a href="#">blouse</a>
+                            <a href="#">dress</a>
+                        </div>
+                    </div>
+                    <!-- Side Bar End -->
+                </div>
+            </div>
+        </div>
+        <!-- About us End -->
+
+        <!-- Brand Start -->
+        <div class="brand">
+            <div class="container-fluid">
+                <div class="brand-slider">
+                  <div class="brand-item"><img src="{% static 'img/brand-1.png' %}" alt=""></div>
+                  <div class="brand-item"><img src="{% static 'img/brand-2.png' %}" alt=""></div>
+                  <div class="brand-item"><img src="{% static 'img/brand-3.png' %}" alt=""></div>
+                  <div class="brand-item"><img src="{% static 'img/brand-4.png' %}" alt=""></div>
+                  <div class="brand-item"><img src="{% static 'img/brand-5.png' %}" alt=""></div>
+                  <div class="brand-item"><img src="{% static 'img/brand-6.png' %}" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <!-- Brand End -->
+   <!-- Footer Start -->
+   <div class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h2>Get in Touch</h2>
+                    <div class="contact-info">
+                        <p><i class="fa fa-map-marker"></i>FCI Assiut</p>
+                        <p><i class="fa fa-envelope"></i>Xlebs@gmail.com</p>
+                        <p><i class="fa fa-phone"></i>+0103-245-3517</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h2>Follow Us</h2>
+                    <div class="contact-info">
+                        <div class="social">
+                            <a href=""><i class="fab fa-twitter"></i></a>
+                            <a href=""><i class="fab fa-facebook-f"></i></a>
+                            <a href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a href=""><i class="fab fa-instagram"></i></a>
+                            <a href=""><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h2>Company Info</h2>
+                    <ul>
+                        <li><a href="{%url 'about_us'%}">About Us</a></li>
+                        <li><a href="{%url 'policy'%}">Privacy Policy</a></li>
+                        <li><a href="{%url 'terms'%}">Terms & Condition</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h2>Purchase Info</h2>
+                    <ul>
+                        <li><a href="#">Pyament Policy</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row payment align-items-center">
+            <div class="col-md-6">
+                <div class="payment-method">
+                    <h2>We Accept:</h2>
+                    <img   src="{% static 'img/payment-method.png' %}" alt="Payment Method" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="payment-security">
+                    <h2>Secured By:</h2>
+                    <img src="{% static 'img/godaddy.svg' %}" alt="Payment Security" />
+                    <img src="{% static 'img/norton.svg' %}" alt="Payment Security" />
+                    <img src="{% static 'img/ssl.svg' %}" alt="Payment Security" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+    <!-- Footer Bottom Start -->
+
+    <!-- Footer Bottom End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/slick/slick.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,682 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>X-Lebs</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="eCommerce HTML Template Free Download" name="keywords">
+        <meta content="eCommerce HTML Template Free Download" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="{% static 'lib/slick/slick.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/slick/slick-theme.css' %}" rel="stylesheet">
+
+
+        <!-- Template Stylesheet -->
+        <link   href="{% static 'css/style.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Nav Bar Start -->
+        <div class="nav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                    <a href="#" class="navbar-brand">MENU</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto">
+                            <a href="{% url 'home_page' %}" class="nav-item nav-link active">Home</a>
+                            <a href="{% url 'all_items' %}" class="nav-item nav-link">Products</a>
+                            <a href="{% url 'cart' %}" class="nav-item nav-link">Cart</a>
+                            <a href="{% url 'my_account' %}" class="nav-item nav-link">My Account</a>
+                            
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
+                                <div class="dropdown-menu">
+                                    <a href="wishlist.html" class="dropdown-item">Wishlist</a>
+                                    <a href="{% url 'contact' %}" class="dropdown-item">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="navbar-nav ml-auto">
+                            {% if customer == '' %}
+                            <div class="h">
+                                <a href="{% url 'login' %}" class="nav-link" > login </a>
+                               
+                                <!-- <div class="dropdown-menu"> -->
+                                    {% else %}
+                                    <a href="/logout" class="dropdown-item">{{first|capfirst }}<span style="color:#0a0238"></span>{{last|capfirst}}</a>
+                                    <!-- <a href="{% url 'register' %}" class="dropdown-item">Register</a> -->
+                                <!-- </div> -->
+                            </div>
+                            
+                            <a href="#" class="nav-link dropdown-toggle" >{{first|capfirst }}<span style="color:#0a0238"></span>{{last|capfirst}}</a>
+                            <a href="/logout" class="btn buton px-2 py-2 rounded-circle mr-3"></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Nav Bar End -->
+
+        <!-- Bottom Bar Start -->
+        <div class="bottom-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="{% url 'home_page' %}">
+                                <img   src="{% static 'img/logo.png' %}" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <input type="text" placeholder="Search">
+                            <button><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="user">    
+                            <a href="{% url 'cart' %}" class="btn cart">
+                                <i class="fas fa-shopping-bag font">
+                                    {% if length > 0%}
+                                    <span class="cart_item rounded-circle">{{length}}</span>
+                                    {% endif %}
+                                </i></a>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+              
+                <hr>
+                
+            </div>
+        </div>
+        <!-- Bottom Bar End -->
+
+        <!-- Main Slider Start -->
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2">
+                       
+                    </div>
+                    <div class="col-md-6">
+                        <div class="header-slider normal-slider">
+                            <div class="header-slider-item">
+
+                                <img src="{% static 'img/slider-1.jpg' %}" alt="Slider Image" />
+                                <div class="header-slider-caption">
+                                    <p>Your Fashion Destination</p>
+                                    <a class="btn" href="{% url 'all_items' %}"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                </div>
+                            </div>
+                            <div class="header-slider-item">
+                                <img  src="{% static 'img/slider-2.jpg' %}" alt="Slider Image" />
+                                <div class="header-slider-caption">
+                                    <p>Your Fashion Destination</p>
+                                    <a class="btn" href="{% url 'all_items' %}"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                </div>
+                            </div>
+                            <div class="header-slider-item">
+                                <img  src="{% static 'img/slider-3.jpg' %}" alt="Slider Image" />
+                                <div class="header-slider-caption">
+                                    <p>Your Fashion Destination</p>
+                                    <a class="btn" href="{% url 'all_items' %}"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="header-img">
+                            <div class="img-item">
+
+                                <img src="{% static 'img/category-1.jpg' %}" />
+                                
+                                   
+                                
+                            </div>
+                            <div class="img-item">
+                                <img src="{% static 'img/category-2.jpg' %}" />
+                               
+                                    
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Slider End -->
+
+        <!-- Brand Start -->
+        <div class="brand">
+            <div class="container-fluid">
+                <div class="brand-slider">
+
+                    <div class="brand-item"><img src="{% static 'img/brand-1.png' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/brand-2.png' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/brand-3.png' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/brand-4.png' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/brand-5.png' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/brand-1.png' %}" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <!-- Brand End -->
+
+        <!-- Feature Start-->
+        <div class="feature">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fab fa-cc-mastercard"></i>
+                            <h2>Secure Payment</h2>
+                            <p>
+                                Payment by CB, Visa, MasterCard and in a safe way.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-truck"></i>
+                            <h2>Delivery all Provinces</h2>
+                            <p>
+                                Delivery will be to all Provincesin the fastest time.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-sync-alt"></i>
+                            <h2>3 Days Return</h2>
+                            <p>
+                                You can return the product after 3 days without defects, and shipping fees will be deducted.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-comments"></i>
+                            <h2>24/7 Support</h2>
+                            <p>
+                                Support is available and is available on March day and week.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Feature End-->
+
+        <!-- Category Start-->
+        <div class="category">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="category-item ch-400">
+
+                            <img src="{% static 'img/category-3.jpg' %}"/>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="category-item ch-250">
+                            <img src="{% static 'img/category-4.jpg' %}" />
+                          
+                        </div>
+                        <div class="category-item ch-150">
+                            <img src="{% static 'img/category-5.jpg' %}" />
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="category-item ch-150">
+                            <img src="{% static 'img/category-6.jpg' %}" />
+                            
+                        </div>
+                        <div class="category-item ch-250">
+                            <img src="{% static 'img/category-7.jpg' %}" />
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="category-item ch-400">
+                            <img src="{% static 'img/category-8.jpg' %}" />
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Category End-->
+
+
+
+        <!-- Featured Product Start -->
+        <div class="featured-product product">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <h1>Featured Product</h1>
+                    
+                </div>
+                <div class="row align-items-center product-slider product-slider-4">
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{item.0.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src= "{{item.0.item_picture.url}}"  alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.0.id}}&loc=index">
+                                        <i class="fa fa-cart-plus"></i>
+                                    </a>
+                                    
+                                    <a href="{% url 'item_detail' item.0.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.0.item_price}}</h3>
+                                <a class="btn" href="product-detail.html"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{item.1.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="{{item.1.item_picture.url}}" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.1.id}}&loc=index"><i class="fa fa-cart-plus"></i></a>
+                                    
+                                    <a href="{% url 'item_detail' item.1.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.1.item_price}}</h3>
+                                <a class="btn" href="product-detail-abay.html"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{item.2.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="{{item.2.item_picture.url}}" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.2.id}}&loc=index"><i class="fa fa-cart-plus"></i></a>
+                                   
+                                    <a href="{% url 'item_detail' item.2.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.2.item_price}}</h3>
+                                <a class="btn" href="product-detail-dress.html"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{item.3.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="{{item.3.item_picture.url}}" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.3.id}}&loc=index"><i class="fa fa-cart-plus"></i></a>
+                                    
+                                    <a href="{% url 'item_detail' item.3.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.3.item_price}}</h3>
+                                <a class="btn" href="product-detail-blouse.html"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{item.4.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="{{item.4.item_picture.url}}" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.4.id}}&loc=index"><i class="fa fa-cart-plus"></i></a>
+                                    
+                                    <a href="{% url 'item_detail' item.4.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.4.item_price}}</h3>
+                                <a class="btn" href="product-detail-Tshirt.html"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Featured Product End -->
+
+        <!-- Newsletter Start -->
+        <div class="newsletter">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Subscribe Our Newsletter</h1>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter End -->
+
+        <!-- Recent Product Start -->
+        <div class="recent-product product">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <h1>Recent Product</h1>
+                </div>
+                <div class="row align-items-center product-slider product-slider-4">
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="{% url 'home_page'  %}">{{item.5.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="{{item.5.item_picture.url}}" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.5.id}}&loc=index"><i class="fa fa-cart-plus"></i></a>
+                                    
+                                    <a href="{% url 'item_detail' item.5.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.5.item_price}}</h3>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{item.6.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="{{item.6.item_picture.url}}" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.6.id}}&loc=index"><i class="fa fa-cart-plus"></i></a>
+                                    
+                                    <a href="{% url 'item_detail' item.6.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.6.item_price}}</h3>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{item.7.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="{{item.7.item_picture.url}}" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.7.id}}&loc=index"><i class="fa fa-cart-plus"></i></a>
+                                    
+                                    <a href="{% url 'item_detail' item.7.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.7.item_price}}</h3>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{item.8.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="{{item.8.item_picture.url}}" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.8.id}}&loc=index"><i class="fa fa-cart-plus"></i></a>
+                                    
+                                    <a href="{% url 'item_detail' item.8.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.8.item_price}}</h3>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">{{item.9.item_name}}</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="{{item.9.item_picture.url}}" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add?id={{item.0.id}}&loc=index"><i class="fa fa-cart-plus"></i></a>
+                                    
+                                    <a href="{% url 'item_detail' item.9.slug %}"><i class="fa fa-info"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{item.9.item_price}}</h3>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Recent Product End -->
+
+        <!-- Footer Start -->
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Get in Touch</h2>
+                            <div class="contact-info">
+                                <p><i class="fa fa-map-marker"></i>FCI Assiut</p>
+                                <p><i class="fa fa-envelope"></i>Xlebs@gmail.com</p>
+                                <p><i class="fa fa-phone"></i>+0103-245-3517</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Follow Us</h2>
+                            <div class="contact-info">
+                                <div class="social">
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Company Info</h2>
+                            <ul>
+                                <li><a href="{%url 'about_us'%}">About Us</a></li>
+                                <li><a href="{%url 'policy'%}">Privacy Policy</a></li>
+                                <li><a href="{%url 'terms'%}">Terms & Condition</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Purchase Info</h2>
+                            <ul>
+                                <li><a href="#">Pyament Policy</a></li>
+                                <li><a href="#">Shipping Policy</a></li>
+                                <li><a href="#">Return Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row payment align-items-center">
+                    <div class="col-md-6">
+                        <div class="payment-method">
+                            <h2>We Accept:</h2>
+                            <img   src="{% static 'img/payment-method.png' %}" alt="Payment Method" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-security">
+                            <h2>Secured By:</h2>
+                            <img src="{% static 'img/godaddy.svg' %}" alt="Payment Security" />
+                            <img src="{% static 'img/norton.svg' %}" alt="Payment Security" />
+                            <img src="{% static 'img/ssl.svg' %}" alt="Payment Security" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Footer Bottom Start -->
+
+        <!-- Footer Bottom End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+
+        <script src="{% static 'lib/slick/slick.min.js' %}"></script>
+
+        <!-- Template Javascript -->
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>
